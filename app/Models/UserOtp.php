@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class UserOtp extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+       'country_code', 'user_id','account_type','otp','expire_at'
+    ];
+}

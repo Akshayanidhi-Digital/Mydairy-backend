@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body{
+    background: #CEE5F6;
+    font-family:  Roboto;
+}
+
+.hero_bg{
+    filter: brightness(45%);
+    z-index: -1;
+}
+
+.front_layer img{
+    height: 15rem;
+    width: 30rem;
+}
+
+.border_profile{
+    border: 2px solid #0066B7;
+}

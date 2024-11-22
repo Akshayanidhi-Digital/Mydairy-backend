@@ -1,0 +1,42 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+# <IfModule mod_proxy.c>
+#     <IfModule mod_proxy_wstunnel.c>
+#         RewriteEngine On
+
+#         # Handle WebSocket Upgrade Requests
+#         RewriteCond %{HTTP:Upgrade} =websocket [NC]
+#         RewriteCond %{HTTP:Connection} upgrade$ [NC]
+#         RewriteRule ^/app(.*)$ wss://localhost:8080/app$1 [P,L]
+
+#         ProxyPass /app wss://localhost:8080/app
+#         ProxyPassReverse /app wss://localhost:8080/app
+#     </IfModule>
+
+#     # Handle Regular HTTP Requests
+#     RewriteCond %{REQUEST_URI} ^/app [NC]
+#     RewriteRule ^/app(.*)$ http://localhost:8080/app$1 [P,L]
+
+#     ProxyPass /app http://localhost:8080/app
+#     ProxyPassReverse /app http://localhost:8080/app
+# </IfModule>
+
